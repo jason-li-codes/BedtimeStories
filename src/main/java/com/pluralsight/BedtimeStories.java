@@ -7,7 +7,7 @@ public class BedtimeStories {
 
     public static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         boolean isRunning = true;
 
@@ -18,7 +18,7 @@ public class BedtimeStories {
                     (1) Goldilocks
                     (2) Hansel & Gretel
                     (3) Mary had a Little Lamb
-                    (4) let's say good night
+                    (4) I'm tired, let's say good night
                     """);
 
             int storyNum = getValidNumber();
@@ -36,14 +36,12 @@ public class BedtimeStories {
                 case 4:
                     System.out.println("Good night!");
                     isRunning = false;
+                    break;
                 default:
                     System.out.println("Oh no, I don't know that one! Let's try another one.");
             }
 
         }
-
-
-        try (BufferedReader bufReader = new BufferedReader(new FileReader("")))
 
     }
 
@@ -74,6 +72,24 @@ public class BedtimeStories {
 
         // returns the correct inputNumber as an int
         return inputNumber;
+
+    }
+
+    public static void printStory(String storyName) throws FileNotFoundException {
+
+        try (BufferedReader bufReader = new BufferedReader(new FileReader(storyName))) {
+
+            String storyLine;
+            int storyLineCounter = 0;
+
+            while ((storyLine = bufReader.readLine()) != null) {
+                System.out.println(++storyLineCounter + ". " + storyLine);
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("Sorry, I'm having trouble reading this one, let's try another.");
+        }
 
     }
 
