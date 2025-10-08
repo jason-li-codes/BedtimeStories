@@ -21,8 +21,24 @@ public class BedtimeStories {
                     (4) let's say good night
                     """);
 
-            int storyNum = input.
+            int storyNum = getValidNumber();
 
+            switch (storyNum) {
+                case 1:
+                    printStory("goldilocks.txt");
+                    break;
+                case 2:
+                    printStory("hansel_and_gretel.txt");
+                    break;
+                case 3:
+                    printStory("mary_had_a_little_lamb.txt");
+                    break;
+                case 4:
+                    System.out.println("Good night!");
+                    isRunning = false;
+                default:
+                    System.out.println("Oh no, I don't know that one! Let's try another one.");
+            }
 
         }
 
@@ -48,7 +64,7 @@ public class BedtimeStories {
                 inputNumber = input.nextInt();
                 // if it can't read as int, throws exception with error message and sets badInput to true to try again
             } catch (Exception e) {
-                System.out.println("I didn't understand, please try again.");
+                System.out.println("Sorry I don't know what you mean, let's try again.");
                 badInput = true;
             }
             // eats buffer
